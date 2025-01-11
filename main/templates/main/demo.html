@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enhanced Interactive Sections</title>
+    <style>
+        /* General Box Styling */
+        .box {
+            max-width: 800px;
+            margin: 30px auto;
+            padding: 20px;
+            background: linear-gradient(145deg, #ffffff, #f0f0f0);
+            border-radius: 16px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+            animation: fadeIn 1s ease;
+        }
+
+        /* Tab Buttons */
+        .tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .tab {
+            background: #f1f1f1;
+            border: none;
+            padding: 10px 20px;
+            margin: 0 5px;
+            cursor: pointer;
+            font-size: 14px;
+            border-radius: 8px;
+            transition: background 0.3s, transform 0.2s, color 0.3s;
+            font-weight: bold;
+        }
+
+        .tab:hover {
+            background: #e0e0e0;
+            transform: scale(1.05);
+            color: #007BFF;
+        }
+
+        .tab.active {
+            background: #007BFF;
+            color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Tab Content */
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Content Styling */
+        h3 {
+            margin-bottom: 10px;
+            color: #333;
+            animation: typing 2s steps(30) forwards;
+            overflow: hidden;
+            white-space: nowrap;
+            border-right: 2px solid #333;
+        }
+
+        p {
+            font-size: 14px;
+            color: #555;
+            animation: fadeInText 1s ease;
+        }
+
+        a {
+            color: #007BFF;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        a:hover {
+            color: #0056b3;
+            text-decoration: underline;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .tab {
+                font-size: 12px;
+                padding: 8px 16px;
+            }
+
+            p {
+                font-size: 12px;
+            }
+        }
+
+        /* Keyframes for Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes typing {
+            from {
+                width: 0;
+            }
+            to {
+                width: 100%;
+            }
+        }
+
+        @keyframes fadeInText {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section id="profile">
+        <div class="box">
+            <h2>Interactive Profile Sections</h2>
+
+            <!-- Navigation Tabs -->
+            <div class="tabs">
+                <button class="tab active" onclick="showContent('education')">Education</button>
+                <button class="tab" onclick="showContent('skills')">Skills</button>
+                <button class="tab" onclick="showContent('projects')">Projects</button>
+            </div>
+
+            <!-- Content Sections -->
+            <div id="education" class="tab-content active">
+                <h3>Educational Qualifications</h3>
+                <p><strong>B.E. (Computer Science & Engineering)</strong> from Dr. SMCE with 8.5 CGPA.</p>
+                <p><strong>PUC</strong> from Shree Guru Vidya Peetha with 90.33%.</p>
+                <p><strong>High School</strong> from Prerana Public High School with 88%.</p>
+            </div>
+
+            <div id="skills" class="tab-content">
+                <h3>Skills</h3>
+                <p><strong>Operating Systems:</strong> Windows, Linux.</p>
+                <p><strong>Programming:</strong> Python (NumPy, Pandas, Matplotlib), JavaScript, HTML, CSS.</p>
+                <p><strong>Database:</strong> MySQL, MongoDB.</p>
+            </div>
+
+            <div id="projects" class="tab-content">
+                <h3>Projects</h3>
+                <p><strong>Portfolio Website:</strong> A responsive portfolio showcasing my skills and projects.</p>
+                <p><strong>Technologies:</strong> HTML, CSS, JavaScript, Python (Django).</p>
+                <a href="https://github.com/dsanket45/portfolio" target="_blank">View Project</a>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        function showContent(tabId) {
+            // Hide all tab contents
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach((content) => {
+                content.classList.remove('active');
+            });
+
+            // Show the selected tab content
+            const activeContent = document.getElementById(tabId);
+            activeContent.classList.add('active');
+
+            // Highlight the active tab
+            const tabs = document.querySelectorAll('.tab');
+            tabs.forEach((tab) => {
+                tab.classList.remove('active');
+            });
+            document.querySelector(`.tab[onclick="showContent('${tabId}')"]`).classList.add('active');
+        }
+    </script>
+</body>
+</html>

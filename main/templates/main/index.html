@@ -1,0 +1,768 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <title>Sanket's Portfolio</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+        body {
+            background: linear-gradient(45deg, rgb(252, 252, 252), rgba(184, 230, 246, 0.97));
+            font-family: 'Poppins', sans-serif;
+            {% comment %} font-family: 'Roboto', sans-serif; {% endcomment %}
+            {% comment %} color:white;  {% endcomment %}
+            {% comment %} height: 100vh; {% endcomment %}
+            {% comment %} overflow: hidden; {% endcomment %}
+            {% comment %} background: linear-gradient(45deg, #ff9a9e, #fad0c4, #fbc2eb, #a18cd1); {% endcomment %}
+            {% comment %} background-size: 400% 400%; {% endcomment %}
+            animation: gradientAnimation 8s ease infinite;
+            
+          }
+          
+          @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+          }
+         
+          body {
+            font-family: 'Roboto', sans-serif;
+        }
+        
+        header {
+            text-align: center;
+            padding: 50px;
+            
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+        nav a {
+            text-decoration: none;
+            {% comment %} color: white; {% endcomment %}
+            font-family: 'Poppins', sans-serif;
+            font-weight: bold;
+        }
+        section, footer {
+            padding: 20px;
+            text-align: center;
+        }
+        a {
+            margin: 0 10px;
+            text-decoration: none;
+            color: #000; /* Default color (black) */
+            font-size: 16px;
+            transition: color 0.3s ease;
+        }
+        /* Hover effects for each brand */
+        a:hover .fa-github {
+            color: #171515; /* GitHub original color */
+        }
+        a:hover .fa-linkedin {
+            color: #0077b5; /* LinkedIn original color */
+        }
+        a:hover .fa-twitter {
+            color: #1DA1F2; /* Twitter/X original color */
+        }
+        a:hover .fa-instagram {
+            color: #E4405F; /* Instagram original color */
+        }
+        footer{
+            margin-left:0;
+            margin-right:0;
+            background: linear(45deg, rgb(94, 13, 5), rgba(12, 190, 249, 0.97));
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            animation: fadeIn 2s ease-in-out;
+          }
+          
+          /* Contact form styling */
+          #contactForm {
+            background: #fff;
+            padding: 20px;
+            width: 350px;
+            border-radius: 10px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            animation: slideIn 1.5s ease-in-out;
+            background: linear-gradient(145deg,rgb(106, 245, 238),rgb(176, 247, 243));
+box-shadow: 10px 10px 20pxrgb(194, 238, 14), -10px -10px 20px #ff8eb3;
+
+          }
+          
+          #contactForm h2 {
+            text-align: center;
+            color: #007BFF;
+            margin-bottom: 10px;
+          }
+          
+          /* Input and button styles */
+          #contactForm input, 
+          #contactForm textarea, 
+          #contactForm button {
+            font-size: 14px;
+            padding: 10px 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            outline: none;
+            transition: all 0.3s ease-in-out;
+          }
+          
+          #contactForm input:focus, 
+          #contactForm textarea:focus {
+            border-color:rgb(43, 252, 6);
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+          }
+          
+          /* Button styling */
+          #contactForm button {
+            background: linear-gradient(90deg, #007BFF, #00c6ff);
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            text-transform: uppercase;
+            transition: background 0.3s ease-in-out;
+          }
+          
+          #contactForm button:hover {
+            background: linear-gradient(90deg, #00c6ff, #007BFF);
+            transform: scale(1.05);
+          }
+          
+          /* Animations */
+          @keyframes fadeIn {
+            from {
+              opacity: 0;
+            }
+            to {
+              opacity: 1;
+            }
+          }
+          
+          @keyframes slideIn {
+            from {
+              transform: translateY(-30px);
+              opacity: 0;
+            }
+            to {
+              transform: translateY(0);
+              opacity: 1;
+            }
+          }
+          
+          /* Responsive design */
+          @media (max-width: 400px) {
+            #contactForm {
+              width: 70%;
+            }
+          }
+          #typing {
+            font-family: 'Poppins', sans-serif;
+            font-size: 3.5rem; /* Default font size */
+            border-right: 3px solid black; /* Cursor effect */
+            width: 0; /* Initially hide text */
+            overflow: hidden; /* Prevent text from overflowing */
+            white-space: nowrap; /* Prevent text from wrapping */
+            display: inline-block; /* Ensure it stays in one line */
+            animation: typing 3s steps(30) infinite, blink-caret 0.75s step-end infinite;
+          }
+          
+          @keyframes typing {
+            0% {
+              width: 0;
+            }
+            50% {
+              width: 100%;
+            }
+            100% {
+              width: 0;
+            }
+          }
+          
+          @keyframes blink-caret {
+            50% {
+              border-color: transparent;
+            }
+            100% {
+              border-color: black;
+            }
+          }
+          
+          /* Mobile devices styling */
+          @media (max-width: 768px) {
+            #typing {
+              font-size: 1.8rem; /* Smaller font size for mobile */
+              width: 0; /* Ensuring it's hidden initially */
+              animation: typing 3s steps(30) infinite, blink-caret 0.75s step-end infinite;
+            }
+          }
+          
+          /* Extra small devices (phones in portrait mode) */
+          @media (max-width: 480px) {
+            #typing {
+              font-size: 1.5rem; /* Even smaller font size for very small screens */
+              width: 0;
+              animation: typing 3s steps(25) infinite, blink-caret 1.75s step-end infinite;
+            }
+          }
+          
+          .objective{
+            font-family:italic;
+            
+          }
+          
+          .education {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        
+        .education h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        
+        .education p {
+            font-size: 16px;
+            line-height: 1.6;
+            margin: 8px 0;
+        }
+        
+        .education strong {
+            font-weight: bold;
+        }
+         h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            text-decoration: underline;
+            text-decoration-color: #000; /* change underline color */
+            text-decoration-thickness: 2px; /* adjust thickness */
+        }
+       {% comment %} for education and skills styles ------------------------------{% endcomment %}
+
+
+{% comment %} for body font size {% endcomment %}
+/* General Font Styling */
+{% comment %} body {
+    font-family: "Arial", sans-serif; /* Use a clean and professional font */
+    font-size: 14px; /* Default smaller font size for the entire website */
+    line-height: 1.6; /* Adjust line height for readability */
+    color: #333; /* Neutral text color */
+    margin: 0;
+    padding: 0;
+}
+
+/* Headings Styling (Larger Font) */
+h1, h2, h3 {
+    font-family: """, serif; /* Use a distinct font for headings */
+    color: #222; /* Slightly darker shade for emphasis */
+    font-weight: bold;
+}
+
+/* Specific Heading Sizes */
+h1 {
+    font-size: 32px; /* Large main heading */
+    margin-bottom: 20px;
+}
+
+h2 {
+    font-size: 24px; /* Section headings */
+    margin-bottom: 15px;
+}
+
+h3 {
+    font-size: 20px; /* Sub-headings */
+    margin-bottom: 10px;
+}
+
+/* Paragraphs and Other Text */
+p, li, a {
+    font-size: 14px; /* Smaller font size for general text */
+}
+
+/* Section Box Adjustments */
+section {
+    margin: 20px auto;
+    max-width: 800px;
+    padding: 20px;
+    background:rgba(255, 255, 255, 0.38);
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Links */
+a {
+    font-size: 14px; /* Match general text size */
+    text-decoration: none;
+    color: #007BFF;
+    transition: color 0.3s;
+}
+
+a:hover {
+    color: #0056b3;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    body {
+        font-size: 12px; /* Slightly smaller for mobile screens */
+    }
+
+    h1 {
+        font-size: 28px;
+    }
+
+    h2 {
+        font-size: 20px;
+    }
+
+    h3 {
+        font-size: 18px;
+    }
+
+    section {
+        padding: 15px;
+    }
+} {% endcomment %}
+.box {
+    max-width: 660px;
+    margin: 30px auto;
+    padding: 20px;
+    background: linear-gradient(145deg, #ffffff, #f0f0f0);
+    border-radius: 16px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.64);
+    animation: fadeIn 1s ease;
+}
+
+/* Tab Buttons */
+.tabs {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.tab {
+    background: #f1f1f1;
+    border: none;
+    padding: 10px 20px;
+    margin: 0 5px;
+    cursor: pointer;
+    font-size: 14px;
+    border-radius: 8px;
+    transition: background 0.3s, transform 0.2s, color 0.3s;
+    font-weight: bold;
+}
+
+.tab:hover {
+    background: #e0e0e0;
+    transform: scale(1.05);
+    color: #007BFF;
+}
+
+.tab.active {
+    background: #007BFF;
+    color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Tab Content */
+.tab-content {
+    display: none;
+    animation: fadeIn 0.5s ease;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* Content Styling */
+h3 {
+    margin-bottom: 10px;
+    color: #333;
+    animation: typing 4s steps(30) forwards;
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 2px solid #333;
+}
+
+p {
+    font-size: 14px;
+    color: #555;
+    animation: fadeInText 1s ease;
+}
+
+a {
+    color: #007BFF;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+a:hover {
+    color: #0056b3;
+    text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .tab {
+        font-size: 12px;
+        padding: 8px 16px;
+    }
+
+    p {
+        font-size: 12px;
+    }
+}
+
+/* Keyframes for Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes typing {
+    from {
+        width: 0;
+    }
+    to {
+        width: 100%;
+    }
+}
+
+@keyframes fadeInText {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+{% comment %} photo and objective style----------------------------------- {% endcomment %}
+/* About Section */
+/* About Section */
+#about-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    {% comment %} background-color: #f9f9f9; {% endcomment %}
+}
+
+#about-section .about-box {
+    display: flex;
+    align-items: center;
+    width:100%;
+    max-width: 900px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+#about-section .about-photo {
+    flex: 1;
+    max-width: 40%;
+    height: auto;
+}
+
+#about-section .about-photo img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 10px 0 0 10px;
+}
+
+#about-section .about-objective {
+    flex: 2;
+    padding: 20px;
+}
+
+#about-section .about-objective h2 {
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+    color: #333;
+    text-decoration: underline;
+}
+
+#about-section .about-objective p {
+    font-size: 0.7rem;
+    color: #555;
+    line-height: 1.6;
+}
+
+{% comment %} resume button design {% endcomment %}
+#resume-download {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+#resume-download .download-section {
+    text-align: center;
+}
+
+#download-resume-btn {
+    background-color:rgb(255, 0, 0);
+    color: white;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    font-weight:bold;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+#download-resume-btn:hover {
+    background-color:rgb(92, 12, 3);
+    transform: scale(1.05);
+}
+
+#download-resume-btn:active {
+    transform: scale(0.95);
+}
+.heading {
+    font-size: rem; /* Adjust the size as needed */
+    font-weight: bold;
+    color: #333; /* Optional: Adjust color */
+}
+
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1 class="heading" id="typping">~~Welcome to My Portfolio~~</h1>
+        <nav>
+            <a href="#about">About</a>
+            <a href="#education">Education</a>
+            <a href="#resume">Resume</a>
+            <a href="#contact">Contact</a>
+            {% comment %} <a href="#rights">Rights</a> {% endcomment %}
+        </nav>
+    </header>
+
+    <section id="about">
+        <h1 id="typingg">Hi, I'm D Sanket! </h1>
+        <p>Welcome to my portfolio.</p>
+    </section>
+    <section id="resume">
+        <div class="about-box">
+            <section id="resume-download">
+                <div class="download-section">
+                    <button id="download-resume-btn">Download Resume</button>
+                </div>
+            </section>
+            
+        </div>
+    </section>
+    
+    <section id="about-section">
+        <div class="about-box">
+            <div class="about-photo">
+                <img src="{% static 'main/images/sanket.jpeg' %}" alt="Sanket's Photo">
+            </div> 
+            <div class="about-objective">
+                <h2>Objective</h2>
+                <p class="paragraph" style="color: #333333;">
+                    "As a passionate web developer and aspiring data science enthusiast, 
+                    my primary goal is to create responsive, user-friendly, and visually appealing
+                     websites. With a strong foundation in Python and data structures and algorithms, 
+                     I aim to delve deeper into data science to build smart, data-driven solutions that
+                      solve real-world problems while contributing to the success of organizations."
+
+                </p>
+            </div>
+        </div>
+    </section>
+    
+    
+
+    <section id="profile">
+        <div class="box">
+            <h2>Profile Sections</h2>
+
+            <!-- Navigation Tabs -->
+            <div class="tabs">
+                <button class="tab active" onclick="showContent('education')">Education</button>
+                <button class="tab" onclick="showContent('skills')">Skills</button>
+                <button class="tab" onclick="showContent('projects')">Projects</button>
+            </div>
+
+            <!-- Content Sections -->
+            <div id="education" class="tab-content active">
+                <h3>Educational Qualifications</h3>
+                <p><strong>B.E. (Computer Science & Engineering)</strong> from Dr. SMCE with 8.5 CGPA.</p>
+                <p><strong>PUC</strong> from Shree Guru Vidya Peetha with 90.33%.</p>
+                <p><strong>High School</strong> from Prerana Public High School with 88%.</p>
+            </div>
+
+            <div id="skills" class="tab-content">
+                <h3>Skills</h3>
+                <p><strong>Operating Systems:</strong> Windows, Linux.</p>
+                <p><strong>Programming:</strong> Python (NumPy, Pandas, Matplotlib), JavaScript, HTML, CSS.</p>
+                <p><strong>Database:</strong> MySQL, MongoDB.</p>
+            </div>
+
+            <div id="projects" class="tab-content">
+                <h3>Projects</h3>
+                <p><strong>Portfolio Website:</strong> A responsive portfolio showcasing my skills and projects.</p>
+                <p><strong>Technologies:</strong> HTML, CSS, JavaScript, Python (Django).</p>
+                <a href="https://github.com/dsanket45/portfolio" target="_blank">View Project</a>
+            </div>
+        </div>
+    </section>
+
+
+
+    {% comment %} <section id="education">
+        <h2>Educational Qualifications</h2>
+        <p><strong>B.E. (Computer Science & Engineering)</strong> from Dr. SMCE with 8.5 CGPA. A comprehensive course in computer science covering core technical subjects.</p>
+        <p><strong>PUC</strong> from Shree Guru Vidya Peetha with 90.33%. Focused on Science stream with strong performance in core subjects.</p>
+        <p><strong>High School</strong> from Prerana Public High School with 88%. General education with an emphasis on academic excellence.</p>
+    </section>
+    
+    <section id="skills">
+        <h2>Skills</h2>
+        <p><strong>Operating Systems:</strong> Proficient in Windows and Linux environments, capable of working with both for development and deployment.</p>
+        <p><strong>Programming:</strong> Skilled in <strong>Python</strong> (NumPy, Pandas, Matplotlib), <strong>JavaScript, HTML, and CSS</strong> for web development and data analysis.</p>
+        <p><strong>Database:</strong> Experienced in MySQL and MongoDB for data management and storage.</p>
+    </section>
+    
+    <section id="projects">
+        <h2>Projects</h2>
+        <h3>Portfolio Website</h3>
+        <p>A responsive portfolio website showcasing my skills and projects.</p>
+        <p><strong>Technologies:</strong> HTML, CSS, JavaScript, Python (Django)</p>
+        <a href="https://github.com/dsanket45/portfolio" target="_blank">View Project</a>
+    </section>
+     {% endcomment %}
+
+
+    <section id="contact">
+        <h2>Contact Me</h2>
+        <div class="container">
+        <form id="contactForm">
+            <input type="text" id="name" placeholder="Enter your name" required>
+            <input type="text" id="mobile" placeholder="Enter your mobile number" required>
+            <input type="email" id="email" placeholder="Enter your email" required>
+            <input type="text" id="message" placeholder="Message here...">
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+        
+        <script>
+            document.getElementById('contactForm').addEventListener('submit', async function(event) {
+                event.preventDefault();
+        
+                const name = document.getElementById('name').value;
+                const mobile = document.getElementById('mobile').value;
+                const email = document.getElementById('email').value;
+                const message = document.getElementById('message').value;
+
+        
+                const response = await fetch('/submit-contact/', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ name, mobile_number: mobile, email ,message})
+                });
+        
+                const result = await response.json();
+                if (result.success) {
+                    alert('Form submitted successfully!');
+                } else {
+                    alert('Error: ' + result.error);
+                }
+            });
+            function toggleMenu() {
+            const menu = document.getElementById('mobileMenu');
+            if (menu.style.display === 'block') {
+                menu.style.display = 'none';
+            } else {
+                menu.style.display = 'block';
+            }
+        }
+        {% comment %} for education and skill behaviour {% endcomment %}
+        
+            document.addEventListener("DOMContentLoaded", () => {
+                const sections = document.querySelectorAll("section");
+        
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add("in-view");
+                        }
+                    });
+                });
+        
+                sections.forEach((section) => observer.observe(section));
+            });
+            function showContent(tabId) {
+                // Hide all tab contents
+                const contents = document.querySelectorAll('.tab-content');
+                contents.forEach((content) => {
+                    content.classList.remove('active');
+                });
+    
+                // Show the selected tab content
+                const activeContent = document.getElementById(tabId);
+                activeContent.classList.add('active');
+    
+                // Highlight the active tab
+                const tabs = document.querySelectorAll('.tab');
+                tabs.forEach((tab) => {
+                    tab.classList.remove('active');
+                });
+                document.querySelector(`.tab[onclick="showContent('${tabId}')"]`).classList.add('active');
+            }
+
+
+            {% comment %} resume downloader {% endcomment %}
+            document.getElementById("download-resume-btn").addEventListener("click", function () {
+                const link = document.createElement("a");
+                link.href = "{% static 'main/files/SanketDResume.pdf' %}"; // Path to the resume in your static folder
+                link.download = "Sanket_Resume.pdf"; // This is the name for the downloaded file
+                link.style.display = "none"; // Hide the link
+                document.body.appendChild(link); // Append the link to the document body
+                link.click(); // Trigger the download
+                document.body.removeChild(link); // Remove the link after download
+            });
+            
+        </script>
+        
+        
+        
+
+    <footer id="rights" ,class="rights">
+        <div>
+            <a href="https://github.com/dsanket45/" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/d-sanket-39b735246/" target="_blank"><i class="fab fa-linkedin"></i></a>
+            <a href="https://x.com/D__Sanket" target="_blank"><i class="fab fa-twitter"></i></a>
+            <a href="https://www.instagram.com/thenameissanket_/" target="_blank"><i class="fab fa-instagram"></i></a>
+            <p><a href="mailto:dsanket373@gmail.com">dsanket373@gmail.com</a></p>
+            <p>&copy; 2025 Sanket. All rights reserved.</p>
+           
+        </div>
+    </footer>
+</body>
+</html>

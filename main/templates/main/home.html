@@ -1,0 +1,44 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+<section id="about">
+    <h1>Hi, I'm Sanket!</h1>
+    <p>Welcome to my portfolio.</p>
+</section>
+<section id="education">
+    <h2>Education</h2>
+    <ul>
+        {% for edu in education_list %}
+        <li>
+            <h3>{{ edu.degree }} at {{ edu.institution }}</h3>
+            <p>{{ edu.start_year }} - {{ edu.end_year }}</p>
+            <p>Percentage: {{ edu.percentage }}%</p>
+        </li>
+        {% endfor %}
+    </ul>
+</section>
+<section id="projects">
+    <h2>Projects</h2>
+    <ul>
+        {% for project in project_list %}
+        <li>
+            <h3>{{ project.title }}</h3>
+            <p>{{ project.description }}</p>
+            <p>Technologies: {{ project.technologies }}</p>
+            <a href="{{ project.project_link }}" target="_blank">View Project</a>
+        </li>
+        {% endfor %}
+    </ul>
+</section>
+<section id="contact">
+    <h2>Contact Me</h2>
+    <form method="post" action="{% url 'contact' %}">
+        {% csrf_token %}
+        <input type="text" name="name" placeholder="Your Name" required>
+        <input type="email" name="email" placeholder="Your Email" required>
+        <input type="tel" name="phone" placeholder="Your Phone Number">
+        <textarea name="message" placeholder="Your Message" required></textarea>
+        <button type="submit">Send Message</button>
+    </form>
+</section>
+{% endblock %}
